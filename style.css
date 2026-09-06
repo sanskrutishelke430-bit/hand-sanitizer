@@ -921,3 +921,144 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .lightbox-content { padding: 34px; margin: 0 20px; }
   .btn { padding: 13px 26px; font-size: 0.92rem; }
 }
+/* ================= INGREDIENT JARS ================= */
+.jar-shelf {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+.jar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  opacity: 0;
+}
+.jar {
+  position: relative;
+  width: 100%;
+  max-width: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition);
+}
+.jar-wrap:hover .jar { transform: translateY(-10px) rotate(-2deg); }
+.jar-lid {
+  width: 60%;
+  height: 14px;
+  background: linear-gradient(180deg, #9fb3c8, #64748b);
+  border-radius: 6px 6px 2px 2px;
+  box-shadow: 0 3px 6px rgba(15,36,56,0.2);
+  z-index: 2;
+}
+.jar-body {
+  position: relative;
+  width: 100%;
+  height: 130px;
+  background: rgba(255,255,255,0.35);
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 0 0 22px 22px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  box-shadow: var(--glass-shadow);
+}
+.jar-liquid {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 62%;
+  animation: liquidWobble 4s ease-in-out infinite;
+}
+@keyframes liquidWobble {
+  0%, 100% { height: 58%; }
+  50% { height: 66%; }
+}
+.liquid-ethanol   { background: linear-gradient(180deg, #93c5fd, #2563eb); }
+.liquid-glycerol  { background: linear-gradient(180deg, #bbf7d0, #16a34a); }
+.liquid-water     { background: linear-gradient(180deg, #bae6fd, #0ea5e9); }
+.liquid-peroxide  { background: linear-gradient(180deg, #e0f2fe, #38bdf8); }
+.liquid-fragrance { background: linear-gradient(180deg, #fbcfe8, #db2777); }
+
+.jar-shine {
+  position: absolute;
+  top: 10px; left: 12px;
+  width: 14px; height: 60%;
+  background: rgba(255,255,255,0.55);
+  border-radius: 10px;
+  filter: blur(1px);
+}
+.jar-label {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--dark);
+  min-height: 34px;
+}
+.jar-hint {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.8;
+}
+.jar-wrap:hover .jar-hint { opacity: 1; }
+
+/* ================= MOLECULE MODAL ================= */
+.molecule-modal {
+  position: fixed; inset: 0;
+  background: rgba(15,36,56,0.85);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+  opacity: 0; visibility: hidden;
+  transition: var(--transition);
+  padding: 20px;
+}
+.molecule-modal.open { opacity: 1; visibility: visible; }
+.molecule-card {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 44px 40px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  transform: scale(0.85);
+  transition: var(--transition);
+  box-shadow: 0 30px 60px rgba(15,36,56,0.3);
+}
+.molecule-modal.open .molecule-card { transform: scale(1); }
+.molecule-svg-wrap {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.molecule-svg-wrap svg { width: 100%; height: 100%; }
+.molecule-card h3 { font-size: 1.3rem; color: var(--blue-dark); margin-bottom: 6px; }
+.molecule-formula {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--green);
+  background: var(--gradient-soft);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.molecule-card p { color: var(--grey); font-size: 0.92rem; }
+
+@media (max-width: 992px) {
+  .jar-shelf { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 576px) {
+  .jar-shelf { grid-template-columns: repeat(2, 1fr); }
+  .molecule-card { padding: 32px 24px; }
+}
+
