@@ -235,5 +235,124 @@ document.addEventListener('DOMContentLoaded', () => {
       inner.style.transform = 'rotateX(0) rotateY(0) translateY(0)';
     });
   });
+/* ---------- INGREDIENT JARS → MOLECULE MODAL ---------- */
+  const moleculeData = {
+    ethanol: {
+      name: 'Ethanol / Isopropyl Alcohol',
+      formula: 'C₂H₅OH',
+      desc: 'Add Description — the primary antimicrobial agent that kills germs on contact.',
+      svg: `<svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="30" y1="80" x2="70" y2="50" stroke="#2563eb" stroke-width="4"/>
+        <line x1="70" y1="50" x2="110" y2="80" stroke="#2563eb" stroke-width="4"/>
+        <line x1="110" y1="80" x2="150" y2="50" stroke="#2563eb" stroke-width="4"/>
+        <circle cx="30" cy="80" r="9" fill="#93c5fd"/>
+        <circle cx="70" cy="50" r="9" fill="#93c5fd"/>
+        <circle cx="110" cy="80" r="9" fill="#2563eb"/>
+        <circle cx="150" cy="50" r="9" fill="#dc2626"/>
+        <text x="146" y="35" font-size="14" fill="#0f2438" font-family="Poppins">OH</text>
+      </svg>`
+    },
+    glycerol: {
+      name: 'Glycerol',
+      formula: 'C₃H₈O₃',
+      desc: 'Add Description — a moisturizing agent that softens skin and prevents dryness.',
+      svg: `<svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="60" x2="60" y2="90" stroke="#16a34a" stroke-width="4"/>
+        <line x1="60" y1="90" x2="110" y2="60" stroke="#16a34a" stroke-width="4"/>
+        <line x1="110" y1="60" x2="160" y2="90" stroke="#16a34a" stroke-width="4"/>
+        <line x1="20" y1="60" x2="20" y2="25" stroke="#16a34a" stroke-width="3"/>
+        <line x1="110" y1="60" x2="110" y2="25" stroke="#16a34a" stroke-width="3"/>
+        <line x1="160" y1="90" x2="195" y2="65" stroke="#16a34a" stroke-width="3"/>
+        <circle cx="20" cy="60" r="8" fill="#bbf7d0"/>
+        <circle cx="60" cy="90" r="8" fill="#bbf7d0"/>
+        <circle cx="110" cy="60" r="8" fill="#bbf7d0"/>
+        <circle cx="160" cy="90" r="8" fill="#bbf7d0"/>
+        <text x="8" y="16" font-size="13" fill="#0f2438" font-family="Poppins">OH</text>
+        <text x="98" y="16" font-size="13" fill="#0f2438" font-family="Poppins">OH</text>
+        <text x="188" y="58" font-size="13" fill="#0f2438" font-family="Poppins">OH</text>
+      </svg>`
+    },
+    water: {
+      name: 'Distilled Water',
+      formula: 'H₂O',
+      desc: 'Add Description — dilutes the mixture to a safe, usable concentration.',
+      svg: `<svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="80" y1="60" x2="40" y2="30" stroke="#0ea5e9" stroke-width="4"/>
+        <line x1="80" y1="60" x2="120" y2="30" stroke="#0ea5e9" stroke-width="4"/>
+        <circle cx="80" cy="60" r="14" fill="#38bdf8"/>
+        <circle cx="40" cy="30" r="9" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+        <circle cx="120" cy="30" r="9" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+        <text x="72" y="95" font-size="14" fill="#0f2438" font-family="Poppins">O</text>
+        <text x="32" y="18" font-size="12" fill="#0f2438" font-family="Poppins">H</text>
+        <text x="114" y="18" font-size="12" fill="#0f2438" font-family="Poppins">H</text>
+      </svg>`
+    },
+    peroxide: {
+      name: 'Hydrogen Peroxide',
+      formula: 'H₂O₂',
+      desc: 'Add Description — helps eliminate bacterial spores that may be present.',
+      svg: `<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="50" x2="90" y2="50" stroke="#0ea5e9" stroke-width="4"/>
+        <line x1="90" y1="50" x2="140" y2="50" stroke="#0ea5e9" stroke-width="4"/>
+        <line x1="140" y1="50" x2="170" y2="25" stroke="#0ea5e9" stroke-width="3"/>
+        <line x1="40" y1="50" x2="10" y2="25" stroke="#0ea5e9" stroke-width="3"/>
+        <circle cx="90" cy="50" r="11" fill="#38bdf8"/>
+        <circle cx="140" cy="50" r="11" fill="#38bdf8"/>
+        <text x="0" y="16" font-size="13" fill="#0f2438" font-family="Poppins">H</text>
+        <text x="164" y="16" font-size="13" fill="#0f2438" font-family="Poppins">H</text>
+      </svg>`
+    },
+    fragrance: {
+      name: 'Fragrance',
+      formula: 'Blend of Aromatic Compounds',
+      desc: 'Add Description — a scented oil blend added for a pleasant finish; not a single fixed molecule.',
+      svg: `<svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="80" cy="60" r="16" fill="#db2777"/>
+        <circle cx="45" cy="35" r="10" fill="#f9a8d4"/>
+        <circle cx="115" cy="35" r="10" fill="#f9a8d4"/>
+        <circle cx="45" cy="85" r="10" fill="#f9a8d4"/>
+        <circle cx="115" cy="85" r="10" fill="#f9a8d4"/>
+        <line x1="80" y1="60" x2="45" y2="35" stroke="#db2777" stroke-width="3"/>
+        <line x1="80" y1="60" x2="115" y2="35" stroke="#db2777" stroke-width="3"/>
+        <line x1="80" y1="60" x2="45" y2="85" stroke="#db2777" stroke-width="3"/>
+        <line x1="80" y1="60" x2="115" y2="85" stroke="#db2777" stroke-width="3"/>
+      </svg>`
+    }
+  };
 
+  const moleculeModal = document.getElementById('moleculeModal');
+  const moleculeClose = document.getElementById('moleculeClose');
+  const moleculeSvgWrap = document.getElementById('moleculeSvgWrap');
+  const moleculeName = document.getElementById('moleculeName');
+  const moleculeFormula = document.getElementById('moleculeFormula');
+  const moleculeDesc = document.getElementById('moleculeDesc');
+
+  document.querySelectorAll('.jar-wrap').forEach(jar => {
+    jar.addEventListener('click', () => {
+      const key = jar.getAttribute('data-molecule');
+      const data = moleculeData[key];
+      if (!data || !moleculeModal) return;
+      moleculeSvgWrap.innerHTML = data.svg;
+      moleculeName.textContent = data.name;
+      moleculeFormula.textContent = data.formula;
+      moleculeDesc.textContent = data.desc;
+      moleculeModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeMoleculeModal() {
+    if (!moleculeModal) return;
+    moleculeModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (moleculeClose) moleculeClose.addEventListener('click', closeMoleculeModal);
+  if (moleculeModal) {
+    moleculeModal.addEventListener('click', (e) => {
+      if (e.target === moleculeModal) closeMoleculeModal();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMoleculeModal();
+  });
 });
