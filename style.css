@@ -921,6 +921,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .lightbox-content { padding: 34px; margin: 0 20px; }
   .btn { padding: 13px 26px; font-size: 0.92rem; }
 }
+
 /* ================= INGREDIENT JARS ================= */
 .jar-shelf {
   display: grid;
@@ -1061,6 +1062,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .jar-shelf { grid-template-columns: repeat(2, 1fr); }
   .molecule-card { padding: 32px 24px; }
 }
+
 /* ================= PRODUCT SPECIFICATION ================= */
 .spec-group-title {
   display: flex;
