@@ -358,5 +358,86 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMoleculeModal();
   });
+/* ---------- CLICK-TO-MIX BEAKER ---------- */
+  const beakerGlass = document.getElementById('beakerGlass');
+  const beakerFill = document.getElementById('beakerFill');
+  const beakerBubbles = document.getElementById('beakerBubbles');
+  const stirRod = document.getElementById('stirRod');
+  const beakerStatus = document.getElementById('beakerStatus');
+  const ingredientItems = document.querySelectorAll('.ingredient-btn');
+  const beakerReset = document.getElementById('beakerReset');
 
+  const ingredientNames = {
+    ethanol: 'Ethanol / Isopropyl Alcohol',
+    glycerol: 'Glycerol',
+    water: 'Distilled Water',
+    peroxide: 'Hydrogen Peroxide',
+    fragrance: 'Fragrance'
+  };
+
+  let addedCount = 0;
+  const totalIngredients = ingredientItems.length;
+
+  function refreshLockState() {
+    ingredientItems.forEach(item => {
+      const order = parseInt(item.getAttribute('data-order'), 10);
+      item.classList.remove('locked', 'done');
+      if (order <= addedCount) {
+        item.classList.add('done');
+      } else if (order !== addedCount + 1) {
+        item.classList.add('locked');
+      }
+    });
+  }
+
+  function addIngredient(item) {
+    const key = item.getAttribute('data-ingredient');
+    const order = parseInt(item.getAttribute('data-order'), 10);
+    if (order !== addedCount + 1 || beakerGlass.classList.contains('mixing')) return;
+
+    const layer = document.createElement('div');
+    layer.className = 'fill-layer liquid-' + key;
+    beakerFill.appendChild(layer);
+    // Force reflow so the height transition actually animates
+    void layer.offsetWidth;
+    layer.classList.add('grown');
+
+    beakerBubbles.classList.add('active');
+    addedCount++;
+    beakerStatus.textContent = 'Added ' + ingredientNames[key] + '...';
+    refreshLockState();
+
+    if (addedCount === totalIngredients) {
+      setTimeout(() => {
+        beakerGlass.classList.add('mixing');
+        stirRod.classList.add('active');
+        beakerBubbles.classList.remove('active');
+        beakerStatus.textContent = 'Mixing the formula...';
+
+        setTimeout(() => {
+          stirRod.classList.remove('active');
+          beakerStatus.textContent = 'Mixed! Ready to Bottle';
+          beakerStatus.classList.add('ready');
+        }, 1500);
+      }, 700);
+    }
+  }
+
+  ingredientItems.forEach(item => {
+    item.addEventListener('click', () => addIngredient(item));
+  });
+
+  function resetBeaker() {
+    addedCount = 0;
+    beakerFill.innerHTML = '';
+    beakerGlass.classList.remove('mixing');
+    beakerBubbles.classList.remove('active');
+    stirRod.classList.remove('active');
+    beakerStatus.textContent = 'Click an ingredient to begin';
+    beakerStatus.classList.remove('ready');
+    refreshLockState();
+  }
+
+  if (beakerReset) beakerReset.addEventListener('click', resetBeaker);
+  refreshLockState();
 });
