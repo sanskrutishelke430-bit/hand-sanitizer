@@ -358,7 +358,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMoleculeModal();
   });
-/* ---------- CLICK-TO-MIX BEAKER ---------- */
+
+  /* ---------- CLICK-TO-MIX BEAKER ---------- */
   const beakerGlass = document.getElementById('beakerGlass');
   const beakerFill = document.getElementById('beakerFill');
   const beakerBubbles = document.getElementById('beakerBubbles');
@@ -440,4 +441,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (beakerReset) beakerReset.addEventListener('click', resetBeaker);
   refreshLockState();
+
 });
