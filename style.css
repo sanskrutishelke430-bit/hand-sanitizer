@@ -1262,3 +1262,29 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .beaker-demo { gap: 26px; }
   .ingredient-panel { width: 100%; max-width: 320px; }
 }
+/* ================= REAL IMAGE FITTING ================= */
+.diagram-placeholder {
+  border: none;
+  background: var(--white);
+  padding: 0;
+}
+.diagram-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+.gallery-placeholder {
+  padding: 0;
+}
+.gallery-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lightbox-content img {
+  max-width: 82vw;
+  max-height: 76vh;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+}
