@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateActiveNavLink();
   }
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
 
   /* ---------- MOBILE NAV TOGGLE ---------- */
   const navToggle = document.getElementById('navToggle');
@@ -87,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
       a.classList.toggle('active-link', a.getAttribute('href') === '#' + currentId);
     });
   }
+
+  // Run the first scroll-state update now that everything above is declared
+  onScroll();
 
   /* ---------- BACK TO TOP ---------- */
   backToTop.addEventListener('click', () => {
@@ -235,7 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
       inner.style.transform = 'rotateX(0) rotateY(0) translateY(0)';
     });
   });
-/* ---------- INGREDIENT JARS → MOLECULE MODAL ---------- */
+
+  /* ---------- INGREDIENT JARS → MOLECULE MODAL ---------- */
   const moleculeData = {
     ethanol: {
       name: 'Ethanol / Isopropyl Alcohol',
@@ -355,4 +358,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMoleculeModal();
   });
+
 });
