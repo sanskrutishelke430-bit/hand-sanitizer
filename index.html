@@ -255,33 +255,51 @@
       <h2>Procedure</h2>
       <p>Step-by-step preparation sequence.</p>
     </div>
-    <div class="beaker-demo reveal-up">
+   <div class="beaker-demo">
   <div class="beaker">
-    <div class="beaker-glass">
-      <div class="beaker-fill">
-        <div class="fill-layer liquid-ethanol"></div>
-        <div class="fill-layer liquid-glycerol"></div>
-        <div class="fill-layer liquid-water"></div>
-        <div class="fill-layer liquid-peroxide"></div>
-        <div class="fill-layer liquid-fragrance"></div>
-      </div>
-      <div class="beaker-bubbles">
+    <div class="beaker-glass" id="beakerGlass">
+      <div class="beaker-fill" id="beakerFill"></div>
+      <div class="beaker-mixed" id="beakerMixed"></div>
+      <div class="beaker-bubbles" id="beakerBubbles">
         <span class="bb b1"></span><span class="bb b2"></span><span class="bb b3"></span>
       </div>
+      <div class="stir-rod" id="stirRod"><i class="fa-solid fa-utensils"></i></div>
     </div>
     <div class="beaker-base"></div>
-    <span class="beaker-ready"><i class="fa-solid fa-circle-check"></i> Ready to Bottle</span>
+    <span class="beaker-status" id="beakerStatus">Click an ingredient to begin</span>
   </div>
 
-  <ul class="ingredient-add-list">
-    <li><span class="dot liquid-ethanol"></span>Add Ethanol / Isopropyl Alcohol</li>
-    <li><span class="dot liquid-glycerol"></span>Add Glycerol</li>
-    <li><span class="dot liquid-water"></span>Add Distilled Water</li>
-    <li><span class="dot liquid-peroxide"></span>Add Hydrogen Peroxide</li>
-    <li><span class="dot liquid-fragrance"></span>Add Fragrance</li>
-  </ul>
+  <div class="ingredient-panel">
+    <ul class="ingredient-add-list" id="ingredientList">
+      <li class="ingredient-btn" data-ingredient="ethanol" data-order="1">
+        <span class="dot liquid-ethanol"></span>
+        <span class="ing-name">Ethanol / Isopropyl Alcohol</span>
+        <i class="fa-solid fa-plus add-icon"></i>
+      </li>
+      <li class="ingredient-btn" data-ingredient="glycerol" data-order="2">
+        <span class="dot liquid-glycerol"></span>
+        <span class="ing-name">Glycerol</span>
+        <i class="fa-solid fa-plus add-icon"></i>
+      </li>
+      <li class="ingredient-btn" data-ingredient="water" data-order="3">
+        <span class="dot liquid-water"></span>
+        <span class="ing-name">Distilled Water</span>
+        <i class="fa-solid fa-plus add-icon"></i>
+      </li>
+      <li class="ingredient-btn" data-ingredient="peroxide" data-order="4">
+        <span class="dot liquid-peroxide"></span>
+        <span class="ing-name">Hydrogen Peroxide</span>
+        <i class="fa-solid fa-plus add-icon"></i>
+      </li>
+      <li class="ingredient-btn" data-ingredient="fragrance" data-order="5">
+        <span class="dot liquid-fragrance"></span>
+        <span class="ing-name">Fragrance</span>
+        <i class="fa-solid fa-plus add-icon"></i>
+      </li>
+    </ul>
+    <button class="beaker-reset" id="beakerReset"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+  </div>
 </div>
-
     <div class="timeline">
       <div class="timeline-progress" id="timelineProgress"></div>
 
