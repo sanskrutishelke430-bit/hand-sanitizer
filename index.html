@@ -230,17 +230,15 @@
     <div class="diagram-grid">
       <div class="diagram-box slide-left">
         <h3>Flowchart</h3>
-        <div class="diagram-placeholder lightbox-trigger" data-caption="Flowchart">
-          <i class="fa-solid fa-diagram-project"></i>
-          <span>Insert Flowchart Here</span>
+        <div class="diagram-placeholder lightbox-trigger" data-caption="Flowchart" data-img="assets/images/flowchart.png">
+          <img src="assets/images/flowchart.png" alt="Flowchart">
         </div>
         <p class="diagram-caption">Shows the sequential process from raw ingredients to the final hand sanitizer product.</p>
       </div>
       <div class="diagram-box slide-right">
         <h3>Block Diagram</h3>
-        <div class="diagram-placeholder lightbox-trigger" data-caption="Block Diagram">
-          <i class="fa-solid fa-sitemap"></i>
-          <span>Insert Block Diagram Here</span>
+       <div class="diagram-placeholder lightbox-trigger" data-caption="Block Diagram" data-img="assets/images/block-diagram.png">
+          <img src="assets/images/block-diagram.png" alt="Block Diagram">
         </div>
         <p class="diagram-caption">Represents the major functional stages of the preparation process in block form.</p>
       </div>
@@ -364,28 +362,28 @@
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item lightbox-trigger" data-caption="Measuring Reagents">
-        <div class="gallery-placeholder"><i class="fa-solid fa-camera"></i><span>Insert Experiment Photo</span></div>
+      <div class="gallery-item lightbox-trigger" data-caption="Measuring Reagents" data-img="assets/images/exp1.jpg">
+        <div class="gallery-placeholder"><img src="assets/images/exp1.jpg" alt="Measuring Reagents"></div>
         <div class="gallery-caption">Measuring Reagents</div>
       </div>
-      <div class="gallery-item lightbox-trigger" data-caption="Mixing the Alcohol Base">
-        <div class="gallery-placeholder"><i class="fa-solid fa-camera"></i><span>Insert Experiment Photo</span></div>
+     <div class="gallery-item lightbox-trigger" data-caption="Mixing the Alcohol Base" data-img="assets/images/exp2.jpg">
+        <div class="gallery-placeholder"><img src="assets/images/exp2.jpg" alt="Mixing the Alcohol Base"></div>
         <div class="gallery-caption">Mixing the Alcohol Base</div>
       </div>
-      <div class="gallery-item lightbox-trigger" data-caption="Adding Glycerol & Water">
-        <div class="gallery-placeholder"><i class="fa-solid fa-camera"></i><span>Insert Experiment Photo</span></div>
+      <div class="gallery-item lightbox-trigger" data-caption="Adding Glycerol & Water" data-img="assets/images/exp3.jpg">
+        <div class="gallery-placeholder"><img src="assets/images/exp3.jpg" alt="Adding Glycerol & Water"></div>
         <div class="gallery-caption">Adding Glycerol & Water</div>
       </div>
-      <div class="gallery-item lightbox-trigger" data-caption="Blending Hydrogen Peroxide">
-        <div class="gallery-placeholder"><i class="fa-solid fa-camera"></i><span>Insert Experiment Photo</span></div>
+      <div class="gallery-item lightbox-trigger" data-caption="Blending Hydrogen Peroxide" data-img="assets/images/exp4.jpg">
+        <div class="gallery-placeholder"><img src="assets/images/exp4.jpg" alt="Blending Hydrogen Peroxide"></div>
         <div class="gallery-caption">Blending Hydrogen Peroxide</div>
       </div>
-      <div class="gallery-item lightbox-trigger" data-caption="Adding Fragrance">
-        <div class="gallery-placeholder"><i class="fa-solid fa-camera"></i><span>Insert Experiment Photo</span></div>
+      <div class="gallery-item lightbox-trigger" data-caption="Adding Fragrance" data-img="assets/images/exp5.jpg">
+        <div class="gallery-placeholder"><img src="assets/images/exp5.jpg" alt="Adding Fragrance"></div>
         <div class="gallery-caption">Adding Fragrance</div>
       </div>
-      <div class="gallery-item lightbox-trigger" data-caption="Final Bottled Sanitizer">
-        <div class="gallery-placeholder"><i class="fa-solid fa-camera"></i><span>Insert Experiment Photo</span></div>
+      <div class="gallery-item lightbox-trigger" data-caption="Final Bottled Sanitizer" data-img="assets/images/exp6.jpg">
+        <div class="gallery-placeholder"><img src="assets/images/exp6.jpg" alt="Final Bottled Sanitizer"></div>
         <div class="gallery-caption">Final Bottled Sanitizer</div>
       </div>
     </div>
@@ -602,8 +600,9 @@
 <!-- ===================== LIGHTBOX ===================== -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-  <div class="lightbox-content">
-    <i class="fa-solid fa-image"></i>
+<div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="" style="display:none;">
+    <i class="fa-solid fa-image" id="lightboxIcon"></i>
     <p id="lightboxCaption">Add Image</p>
   </div>
 </div>
