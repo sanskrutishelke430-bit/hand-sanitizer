@@ -150,14 +150,26 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- LIGHTBOX ---------- */
-  const lightbox = document.getElementById('lightbox');
+   const lightbox = document.getElementById('lightbox');
   const lightboxCaption = document.getElementById('lightboxCaption');
   const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxIcon = document.getElementById('lightboxIcon');
 
   document.querySelectorAll('.lightbox-trigger').forEach(item => {
     item.addEventListener('click', () => {
       const caption = item.getAttribute('data-caption') || 'Add Image';
+      const imgSrc = item.getAttribute('data-img');
       lightboxCaption.textContent = caption;
+      if (imgSrc) {
+        lightboxImg.src = imgSrc;
+        lightboxImg.alt = caption;
+        lightboxImg.style.display = 'block';
+        lightboxIcon.style.display = 'none';
+      } else {
+        lightboxImg.style.display = 'none';
+        lightboxIcon.style.display = 'block';
+      }
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
